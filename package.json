@@ -1,0 +1,13 @@
+{
+  "name": "zip-es",
+  "version": "1.0.0",
+  "type": "module",
+  "bin": {
+    "zipcli": "./zipcli.js",
+    "unzipcli": "./unzipcli.js"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "license": "MIT"
+}
