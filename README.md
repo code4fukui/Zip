@@ -6,7 +6,7 @@ ZIP archive compression and decompression for browsers, Deno, and Node.js.
 Based on the ES modules in [taisukef/zlib.js](https://github.com/taisukef/zlib.js/tree/develop/es).
 
 ```js
-import { Zip } from "./Zip.js";
+import { Zip } from "https://code4fukui.github.io/Zip/Zip.js";
 
 const compressed = Zip.compress({
   "hello.txt": "Hello, ZIP!",
@@ -29,30 +29,6 @@ const secretFiles = Zip.decompress(encrypted, { password: "password" });
 `Zip.compress()` accepts an object, a `Map`, or an array of `{ name, data }` / `[name, data]` entries. String data is encoded as UTF-8. Use `{ store: true }` to create an archive without deflate compression.
 
 `Zip.decompress()` returns an object whose keys are file names and whose values are `Uint8Array` instances.
-
-## CLI
-
-```sh
-./zipcli.js -o archive.zip file.txt directory
-./zipcli.js -o secret.zip -p password directory
-```
-
-Directories are added recursively. When `-o` is omitted, a single input produces `<input>.zip`; multiple inputs produce `archive.zip`.
-
-Extract an archive with `unzipcli.js`:
-
-```sh
-./unzipcli.js -o output archive.zip
-./unzipcli.js -o output -p password secret.zip
-```
-
-Recover a short password by trying combinations from length 1 upward:
-
-```sh
-./unzipcli.js -attack -max 4 -chars abcdef0123456789 secret.zip
-```
-
-The default attack character set is `a-z`, `A-Z`, and `0-9`; the default maximum length is 4.
 
 ## License
 
